@@ -1,67 +1,69 @@
 <!DOCTYPE html>
-<!-- saved from url=(0039)http://vmd78812.contaboserver.net/game/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+        <head>
+                <meta charset="UTF-8">
+                <title>Game</title>
         
-        <title>Game</title>
-        <style>
-            body {
-                background-color: #000;
-                color: #fff;
-                overflow: hidden;
-            }
+                <style>
+                        body {
+                                background-color: #000;
+                                color: #fff;
+                                overflow: hidden;
+                        }
             
-            #xy-out,
-        	#max-out {
-                position: absolute;
-                right: -190px; 
-                padding: 5px;
-                border-radius: 5px 0 0 5px;
-                width: 200px;
-                text-align: right;
-            	transition-duration: 0.5s;
-            }
+                        #xy-out,
+        	        #max-out {
+                                position: absolute;
+                                right: -190px; 
+                                padding: 5px;
+                                border-radius: 5px 0 0 5px;
+                                width: 200px;
+                                text-align: right;
+            	                transition-duration: 0.5s;
+                        }
         
-        	#xy-out  { background-color: #333; top: 10px; }
-        	#max-out { background-color: #222; top: 40px; }
+        	        #xy-out  { background-color: #333; top: 10px; }
+        	        #max-out { background-color: #222; top: 40px; }
             
-            #xy-out:hover,
-            #max-out:hover {
-                right: 0;
-            }
-        </style>
-    </head>
+                        #xy-out:hover,
+                        #max-out:hover {
+                                right: 0;
+                        }
+                </style>
+        </head>
     
-    <body>
+        <body>
         <span id="xy-out" style="font-size: small;"><span id="xy-_out">Man's Position: X=0, Y=0</span><a href="javascript:pinXY();"><img src="./game_files/pin.png" height="15px" width="15px" style="float: right; filter: invert(1);"></a></span>
         <span id="max-out" style="font-size: small;"><span id="max-_out">Window Size: X=1820, Y=760</span><a href="javascript:pinMAX();"><img src="./game_files/pin.png" height="15px" width="15px" style="float: right; filter: invert(1);"></a></span>
         <img src="./game_files/standing-man.png" id="man" style="filter: invert(1); width: 100px; height: 100px; position: absolute;">
         
         <script>
-        	alert("Welcome!\nYou can controll the little man with W, A, S, D or the arrow keys. You can get more information about the position of the man and the window size if you expand the grey labels in the up-right corner of the page.");
+        alert("Welcome!\nYou can controll the little man with W, A, S, D or the arrow keys. You can get more information about the position of the man and the window size if you expand the grey labels in the up-right corner of the page.");
         
-        	function pinXY() {
+        function pinXY() {
                 document.getElementById("xy-out").style.right = "0";
-            }
+        }
             
-        	function pinMAX() {
+        function pinMAX() {
                 document.getElementById("max-out").style.right = "0";
-            }
+        }
         
-            var X = 0, Y = 0;
-            var Ymax = Math.round(window.innerHeight / 10) -10,
-                Xmax = Math.round(window.innerWidth / 10) -10,
-                Ymin = 0,
-                Xmin = 0;
-            document.getElementById("xy-_out").innerHTML = "Man's Position: X="+(X * 10) + ", Y="+(Y * 10);
-            document.getElementById("max-_out").innerHTML = "Window Size: X="+(Xmax * 10) + ", Y="+(Ymax * 10);
+        var X = 0, Y = 0;
+        var Ymax = Math.round(window.innerHeight / 10) -10,
+            Xmax = Math.round(window.innerWidth / 10) -10,
+            Ymin = 0,
+            Xmin = 0;
             
-            window.addEventListener('resize', ()=>{
+        document.getElementById("xy-_out").innerHTML = "Man's Position: X="+(X * 10) + ", Y="+(Y * 10);
+        document.getElementById("max-_out").innerHTML = "Window Size: X="+(Xmax * 10) + ", Y="+(Ymax * 10);
+            
+        window.addEventListener('resize', ()=>{
                 Xmax = Math.round(window.innerWidth / 10) -10;
                 Ymax = Math.round(window.innerHeight / 10) -10;
                 document.getElementById("max-_out").innerHTML = "Window Size: X="+(Xmax * 10) + ", Y="+(Ymax * 10);
-            })
+         })
             
-            document.onkeydown = function(e) {
+         document.onkeydown = function(e) {
                 var KeyCode = e.keyCode;
                 switch (KeyCode) {
                     case 37:
@@ -95,9 +97,8 @@
                 
                 document.getElementById("man").style.top = (Y * 10) + "px";
                 document.getElementById("man").style.left = (X * 10) + "px";
-            document.getElementById("xy-_out").innerHTML = "Man's Position: X="+(X * 10) + ", Y="+(Y * 10);
+                document.getElementById("xy-_out").innerHTML = "Man's Position: X="+(X * 10) + ", Y="+(Y * 10);
             };
         </script>
-    
-
-</body></html>
+    </body>
+</html>
